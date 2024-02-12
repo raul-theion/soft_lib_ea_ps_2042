@@ -1,1 +1,4 @@
 
+[submodule "soft_lib_scpi_device"]
+	path = soft_lib_scpi_device
+	url = https://github.com/theion-batteries/soft_lib_scpi_device.git
