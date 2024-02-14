@@ -28,7 +28,7 @@ class ea_ps2042(scpi_serial_device):
 
     device_id = "EA Elektro-Automatik GmbH & Co. KG, PS 2042-20 B"
 
-    def __init__(self):
+    def __init__(self, port_name = None):
         super().__init__()
 
 # class methods #########################
@@ -109,15 +109,20 @@ class ea_ps2042(scpi_serial_device):
 
     def test(self):
 
-        print("serial port")
-        print(self.serial_port)
-        self.serial_port = config.serial_port
-        self.serial_connect(self.serial_port)
+        # print("serial port")
+        # print(self.port_name)
+        # self.port_name = config.serial_port
+        # self.serial_connect("COM12")
 
-        for i in range(1, 20):
+        for i in range(0,20+1,5):
             t = 1
             self.set_output("on")
             time.sleep(t)
+            print("current voltage:")
+            print(self.get_volt())
+            print("current intensity:")
+            print(self.get_current())
+            time.sleep(1)
             self.set_output("off")
             self.set_volt(i)
             print("voltage set to " + str(i))
