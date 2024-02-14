@@ -24,7 +24,7 @@ import config as config
 
 # from scpi_serial_device import scpi_serial_device                # parent class to inherit from in the case of the supply and function generators
 
-class power_supply(scpi_serial_device):
+class ea_ps2042(scpi_serial_device):
 
     device_id = "EA Elektro-Automatik GmbH & Co. KG, PS 2042-20 B"
 
@@ -124,7 +124,7 @@ def test_sweep():
 
 if __name__ == "__main__":
 
-    supply = power_supply()
+    supply = ea_ps2042()
     supply.serial_connect(config.serial_port)
     print("Device id confirmation:")
     print(supply.confirm_device_id())
