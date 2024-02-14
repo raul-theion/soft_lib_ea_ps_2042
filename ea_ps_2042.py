@@ -17,10 +17,10 @@ import sys
 
 # custom submodule libraries #
 
-from soft_lib_scpi_device.scpi_serial_device import scpi_serial_device
+from .soft_lib_scpi_device.scpi_serial_device import scpi_serial_device
 
 # custom project libraries #
-import config as config
+import soft_lib_ea_ps_2042.config as config
 
 # from scpi_serial_device import scpi_serial_device                # parent class to inherit from in the case of the supply and function generators
 
