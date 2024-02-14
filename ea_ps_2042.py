@@ -107,17 +107,23 @@ class ea_ps2042(scpi_serial_device):
         response = float(response)      # convert to floating number
         return(response)
 
-def test_sweep():
-    for i in range(1,20):
-        t = 1
-        supply.set_output("on")
-        time.sleep(t)
-        supply.set_output("off")
-        supply.set_volt(i)
-        print("voltage set to " + str(i))
-        supply.set_current(i/10)
-        print("current set to " + str(i/10))
-        time.sleep(t)
+    def test(self):
+
+        print("serial port")
+        print(self.serial_port)
+        self.serial_port = config.serial_port
+        self.serial_connect(self.serial_port)
+
+        for i in range(1, 20):
+            t = 1
+            self.set_output("on")
+            time.sleep(t)
+            self.set_output("off")
+            self.set_volt(i)
+            print("voltage set to " + str(i))
+            self.set_current(i / 10)
+            print("current set to " + str(i / 10))
+            time.sleep(t)
 
 
 # MAIN FUNCTION ########################################################
@@ -148,7 +154,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     print("Varying voltage and current max vals.")
-    test_sweep()
+    supply.test()
 
     print("switching off:")
     supply.set_output("off")
